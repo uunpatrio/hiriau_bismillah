@@ -87,12 +87,12 @@
                                     </ul>
                                     <div class="clearfix"></div>
                                 </div>
-                                <form action="<?php echo base_url('c_perkembangan_donatur/'); ?>" method="post">
+                                <form action="<?php echo base_url('c_penerima/'); ?>" method="post">
                                     <!-- <input type="text" name="filter" id="filter"> -->
                                     <div class="col-md-5">
                                         <div class="field item form-group">
                                             <div class="col-md-12 xdisplay_inputx form-group row has-feedback">
-                                                <select name="filter" id="filter" style="font-size: 12px;" class="form-control ">
+                                                <select name="bulan" id="bulan" style="font-size: 12px;" class="form-control ">
                                                     <option value="">Pilih Bulan</option>
                                                     <?php foreach ($getBln as $r) { ?>
                                                         <option value="<?php echo $r->bulan ?>"><?php echo getBulan($r->bulan); ?></option>
@@ -104,8 +104,44 @@
                                     <div class="col-md-4">
                                         <div class="field item form-group">
                                             <div class="col-md-12 xdisplay_inputx form-group row has-feedback">
-                                                <select name="ftahun" id="ftahun" style="font-size: 12px;" class="form-control">
+                                                <select name="tahun" id="tahun" style="font-size: 12px;" class="form-control">
                                                     <option value="">Pilih Tahun</option>
+                                                    <?php foreach ($getThn as $b) { ?>
+                                                        <option value="<?php echo $b->tahun; ?>"><?php echo $b->tahun; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="field item form-group">
+                                            <div class="col-md-12 xdisplay_inputx form-group row has-feedback">
+                                                <select name="jk" id="jk" style="font-size: 12px;" class="form-control ">
+                                                    <option value="">-- Jenis Kelamin --</option>
+                                                    <option value="Laki-laki">Laki-laki</option>
+                                                    <option value="Perempuan">Perempuan</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="field item form-group">
+                                            <div class="col-md-12 xdisplay_inputx form-group row has-feedback">
+                                                <select name="kriteria" id="kriteria" style="font-size: 12px;" class="form-control">
+                                                    <option value="">Kriteria Penerima</option>
+                                                    <?php foreach ($getThn as $b) { ?>
+                                                        <option value="<?php echo $b->tahun; ?>"><?php echo $b->tahun; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="field item form-group">
+                                            <div class="col-md-12 xdisplay_inputx form-group row has-feedback">
+                                                <select name="kriteria" id="kriteria" style="font-size: 12px;" class="form-control">
+                                                    <option value="">Kriteria Penerima</option>
                                                     <?php foreach ($getThn as $b) { ?>
                                                         <option value="<?php echo $b->tahun; ?>"><?php echo $b->tahun; ?></option>
                                                     <?php } ?>

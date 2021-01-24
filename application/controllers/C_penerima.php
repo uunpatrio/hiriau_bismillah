@@ -7,7 +7,8 @@ class C_penerima extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model(array('M_visualisasi', 'Dim_waktu_model'));
+        $this->load->model('M_visualisasi');
+        $this->load->model('Dim_waktu_model');
     }
 
     /**
@@ -27,6 +28,17 @@ class C_penerima extends CI_Controller
      */
     public function index()
     {
+        $bulan = $this->input->post();
+        $tahun = $this->input->post();
+        $jenis_kelamin = $this->input->post();
+        $kategori_umur = $this->input->post();
+        $kriteria = $this->input->post();
+
+        if (empty($bulan) && empty($tahun) && empty($jenis_kelamin) && empty($kategori_umur) && empty($kriteria)) {
+            $view['getDataPenerimaManfaatPerbulan'] = $this->M_visualisasi->getDataPenerimaManfaatPerbulan(date('n'), date('Y'), '', '', '');
+        } else {
+            $view['getDataPenerimaManfaatPerbulan'] = $this->M_visualisasi->getDataPenerimaManfaatPerbulan($bulan, $tahun, $jenis_kelamin, $kategori_umur, $kriteria);
+        }
         $view['getDataPenerimaManfaatPerbulan'] = $this->M_visualisasi->getDataPenerimaManfaatPerbulan(2, 2019, 'Laki-laki', 'Dewasa', 'Yatim');
         $view['getBln'] = $this->Dim_waktu_model->getWaktu('bulan');
         $view['getThn'] = $this->Dim_waktu_model->getWaktu('tahun');

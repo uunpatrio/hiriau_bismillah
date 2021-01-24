@@ -13,7 +13,7 @@
                     <li><a href="<?php echo base_url('C_perkembangan_donatur/donasi') ?>">Perkembangan Donatur</a></li>
                     <li><a href="form.html">Perbandingan donasi dengan PM</a></li>
                     <li><a href="<?php echo base_url('C_penerima') ?>">Persebaran Penerima Manfaat</a></li>
-                    <li><a href="<?php echo base_url('C_perkembangan_donatur/marketer') ?>">Marketer Teraktif</a></li>
+                    <li><a href="<?php echo base_url('C_marketer/index/') ?>">Marketer Teraktif</a></li>
                 </ul>
             </li>
 
@@ -23,8 +23,6 @@
                     <li><a href="<?php echo base_url('Import_penerima') ?>">Data Penerima Manfaat</a></li>
                 </ul>
             </li>
-            <li><a href="<?php echo base_url('C_update_kpi') ?>" class="nav-link">
-                    <i class="fa fa-edit"></i>Update KPI </a></li>
 
 
             <!-- <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>

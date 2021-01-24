@@ -64,6 +64,17 @@ class M_visualisasi extends CI_Model
         $this->db->group_by('dl.kecamatan');
         return $this->db->get()->result();
     }
+
+    public function getMarketer($tahun)
+    {
+        $this->db->select('count(fd.id_marketer) as jlh_marketer, dm.nama_marketer');
+        $this->db->from('fact_donatur fd');
+        $this->db->join('dim_marketer dm', 'dm.id_marketer = fd.id_marketer', 'left');
+        $this->db->join('dim_waktu dw', 'dw.id_waktu = fd.id_waktu', 'left');
+        $this->db->where('dw.tahun', $tahun);
+        $this->db->group_by('dm.nama_marketer');
+        return $this->db->get()->result();
+    }
 }
 
 /* End of file M_visualisasi.php */

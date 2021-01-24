@@ -362,7 +362,7 @@
         <div class="x_panel">
             <div class="x_title">
                 <div class=" btn-group-sm" role="group" aria-label="...">
-                    <button class="btn btn-primary" type="button"><span class="fa fa-line-chart"></span> Target Pencapaian (KPI)</button>
+                    <button class="btn btn-primary" type="button" onclick="window.location = '<?php echo base_url('C_KPI'); ?>'"><span class="fa fa-line-chart"></span> Target Pencapaian (KPI)</button>
                 </div>
                 <ul class="nav navbar-left panel_toolbox">
                 </ul>
