@@ -12,7 +12,7 @@
                     <li><a href="<?php echo base_url('C_perkembangan_donatur') ?>">Segmentasi Pasar</a></li>
                     <li><a href="<?php echo base_url('C_perkembangan_donatur/donasi') ?>">Perkembangan Donatur</a></li>
                     <li><a href="form.html">Perbandingan donasi dengan PM</a></li>
-                    <li><a href="form_advanced.html">Persebaran Penerima Manfaat</a></li>
+                    <li><a href="<?php echo base_url('C_penerima') ?>">Persebaran Penerima Manfaat</a></li>
                     <li><a href="<?php echo base_url('C_perkembangan_donatur/marketer') ?>">Marketer Teraktif</a></li>
                 </ul>
             </li>
@@ -20,7 +20,7 @@
             <li><a><i class="fa fa-desktop"></i> Import Data <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="<?php echo base_url('C_donatur') ?>">Data Donatur</a></li>
-                    <li><a href="<?php echo base_url('C_penerima') ?>">Data Penerima Manfaat</a></li>
+                    <li><a href="<?php echo base_url('Import_penerima') ?>">Data Penerima Manfaat</a></li>
                 </ul>
             </li>
             <li><a href="<?php echo base_url('C_update_kpi') ?>" class="nav-link">

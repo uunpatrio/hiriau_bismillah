@@ -4,6 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class C_penerima extends CI_Controller
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model(array('M_visualisasi', 'Dim_waktu_model'));
+    }
+
     /**
      * Index Page for this controller.
      *
@@ -21,9 +27,13 @@ class C_penerima extends CI_Controller
      */
     public function index()
     {
-        $this->load->view('templates/header');
+        $view['getDataPenerimaManfaatPerbulan'] = $this->M_visualisasi->getDataPenerimaManfaatPerbulan(2, 2019, 'Laki-laki', 'Dewasa', 'Yatim');
+        $view['getBln'] = $this->Dim_waktu_model->getWaktu('bulan');
+        $view['getThn'] = $this->Dim_waktu_model->getWaktu('tahun');
+
+        $this->load->view('templates/header', $view);
         $this->load->view('templates/sidebar');
-        $this->load->view('vimport_penerima');
+        $this->load->view('vPenerimaManfaat');
         $this->load->view('templates/footer');
     }
 }
