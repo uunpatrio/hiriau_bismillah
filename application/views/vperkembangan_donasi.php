@@ -141,7 +141,7 @@
                                 <div class="x_title">
                                     <div class=" btn-group-sm" role="group" aria-label="...">
                                         <h4>
-                                            <li class="fa fa-table"></li> Segmentasi Pasar <small>(Berdasarkan Data Tahunan)</small>
+                                            <li class="fa fa-table"></li> Perkembangan Donatur <small>(Berdasarkan Data Tahunan)</small>
                                         </h4>
                                     </div>
                                     <ul class="nav navbar-left panel_toolbox">

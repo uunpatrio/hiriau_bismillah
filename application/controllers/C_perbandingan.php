@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_marketer extends CI_Controller
+class C_perbandingan extends CI_Controller
 {
 
 
@@ -42,7 +42,7 @@ class C_marketer extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('vperkembangan_marketer');
+        $this->load->view('vperbandinganDonasi');
         $this->load->view('templates/footer');
     }
 }
