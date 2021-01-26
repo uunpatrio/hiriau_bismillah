@@ -16,20 +16,27 @@ class C_perkembangan_donatur extends CI_Controller
         $this->load->helper('my_function_helper');
     }
 
-    public function index()
+    public function index($bulan = '')
     {
-
-
         date_default_timezone_set('Asia/Jakarta');
-        if (empty($this->input->post('filter')) && empty($this->input->post('ftahun'))) {
+        $bulan = $this->input->post('filter');
+        $tahun = $this->input->post('ftahun');
+        if (empty($bulan) && empty($tahun)) {
             $data = array(
                 'getdataperkembangan' => $this->M_perkembangan->grafik_perkembangan_donatur(date('m'), date('Y'))
             );
+            $data['getDonaturByProduk'] = $this->M_perkembangan->getDonaturByProduk(2, 2018);
+            $data['bulan'] = date('m');
+            $data['tahun'] = date('Y');
         } else {
             $data = array(
                 'getdataperkembangan' => $this->M_perkembangan->grafik_perkembangan_donatur($this->input->post('filter'), $this->input->post('ftahun'))
             );
+            $data['bulan'] = $bulan;
+            $data['tahun'] = $tahun;
+            $data['getDonaturByProduk'] = $this->M_perkembangan->getDonaturByProduk($this->input->post('filter'), $this->input->post('ftahun'));
         }
+
         $data['grafikPerkembanganDonaturPertahun'] = $this->M_perkembangan->grafikPerkembanganDonaturPertahun();
         $data['segmentasiPasar'] = $this->M_visualisasi->segmentasiPasar();
         $data['getBulan'] = $this->Dim_waktu_model->getWaktu('bulan');

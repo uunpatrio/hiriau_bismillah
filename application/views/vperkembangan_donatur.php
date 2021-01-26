@@ -5,6 +5,16 @@
         height: 300px;
     }
 
+    #chartdiv1 {
+        width: 100%;
+        height: 300px;
+    }
+
+    #chartdiv2 {
+        width: 100%;
+        height: 400px;
+    }
+
     .amcharts-export-menu-top-right {
         top: 10px;
         right: 0;
@@ -17,7 +27,7 @@
 <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 
-<!-- Bagian Segmentasi Pasar -->
+<!-- Bagian Segmentasi Pasar By Donatur-->
 <script>
     var chart = AmCharts.makeChart("chartdiv", {
         "type": "serial",
@@ -62,23 +72,53 @@
     });
 </script>
 
+<!-- Bagian Segmentasi Pasar By Produk -->
+<script>
+    var chart = AmCharts.makeChart("chartdiv2", {
+        "type": "serial",
+        "theme": "none",
+        "marginRight": 70,
+        "dataProvider": [
+            <?php foreach ($getDonaturByProduk as $row) { ?> {
+                    "country": "<?php echo $row->nama_produk; ?>",
+                    "visits": <?php echo $row->tot_nilai_donasi; ?>,
+                    "color": "#5F9EA0",
+                },
+            <?php } ?>
+        ],
+        "valueAxes": [{
+            "axisAlpha": 0,
+            "position": "left",
+            "title": "Segmentasi Pasar Berdasarkan Produk"
+        }],
+        "startDuration": 1,
+        "graphs": [{
+            "balloonText": "<b>[[category]]: [[value]]</b>",
+            "fillColorsField": "color",
+            "fillAlphas": 0.9,
+            "lineAlpha": 0.2,
+            "type": "column",
+            "valueField": "visits"
+        }],
+        "chartCursor": {
+            "categoryBalloonEnabled": false,
+            "cursorAlpha": 0,
+            "zoomable": false
+        },
+        "categoryField": "country",
+        "categoryAxis": {
+            "gridPosition": "start",
+            "labelRotation": 60
+        },
+        // "export": {
+        //     "enabled": true
+        // }
+
+    });
+</script>
+
 
 <!-- Bagian Perkembangan Donasi -->
-<!-- Styles -->
-<style>
-    #chartdiv1 {
-        width: 100%;
-        height: 400px;
-    }
-</style>
-
-<!-- Resources -->
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script src="https://www.amcharts.com/lib/3/serial.js"></script>
-<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 
 <!-- Chart code -->
 <script>
@@ -191,22 +231,6 @@
                     <div class="col-md-12">
                         <div class="card-box">
                             <div class="title-right">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card-box table-responsive">
-                            <div class="title_right">
-                                <div class="x_title">
-                                    <div class=" btn-group-sm" role="group" aria-label="...">
-                                        <h4>
-                                            <li class="fa fa-table"></li> Segmentasi Pasar<small> (Berdasarkan Donatur)</small>
-                                        </h4>
-                                    </div>
-                                    <ul class="nav navbar-left panel_toolbox">
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
                                 <form action="<?php echo base_url('c_perkembangan_donatur/'); ?>" method="post">
                                     <!-- <input type="text" name="filter" id="filter"> -->
                                     <div class="col-md-5">
@@ -238,6 +262,23 @@
                                     </button>
 
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card-box table-responsive">
+                            <div class="title_right">
+                                <div class="x_title">
+                                    <div class=" btn-group-sm" role="group" aria-label="...">
+                                        <h4>
+                                            <li class="fa fa-table"></li> Segmentasi Pasar<small> (Berdasarkan Donatur (<?php echo getBulan($bulan) . ' Tahun ' . $tahun; ?>))</small>
+                                        </h4>
+                                    </div>
+                                    <ul class="nav navbar-left panel_toolbox">
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+
                                 <div id="chartdiv"></div>
                             </div>
                         </div>
@@ -248,45 +289,15 @@
                                 <div class="x_title">
                                     <div class=" btn-group-sm" role="group" aria-label="...">
                                         <h4>
-                                            <li class="fa fa-table"></li> Segmentasi Pasar<small> (Berdasarkan Produk)</small>
+                                            <li class="fa fa-table"></li> Segmentasi Pasar<small> (Berdasarkan Produk (<?php echo getBulan($bulan) . ' Tahun ' . $tahun; ?>))</small>
                                         </h4>
                                     </div>
                                     <ul class="nav navbar-left panel_toolbox">
                                     </ul>
                                     <div class="clearfix"></div>
                                 </div>
-                                <form action="<?php echo base_url('c_perkembangan_donatur/'); ?>" method="post">
-                                    <!-- <input type="text" name="filter" id="filter"> -->
-                                    <div class="col-md-5">
-                                        <div class="field item form-group">
-                                            <div class="col-md-12 xdisplay_inputx form-group row has-feedback">
-                                                <select name="filter" id="filter" style="font-size: 12px;" class="form-control ">
-                                                    <option value="">Pilih Bulan</option>
-                                                    <?php foreach ($getBulan as $row) { ?>
-                                                        <option value="<?php echo $row->bulan ?>"><?php echo getBulan($row->bulan); ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="field item form-group">
-                                            <div class="col-md-12 xdisplay_inputx form-group row has-feedback">
-                                                <select name="ftahun" id="ftahun" style="font-size: 12px;" class="form-control">
-                                                    <option value="">Pilih Tahun</option>
-                                                    <?php foreach ($getTahun as $row) { ?>
-                                                        <option value="<?php echo $row->tahun; ?>"><?php echo $row->tahun; ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-success btn-sm">
-                                        <li class="fa fa-search"></li> Search
-                                    </button>
 
-                                </form>
-                                <div id="chartdiv"></div>
+                                <div id="chartdiv2"></div>
                             </div>
                         </div>
                     </div>

@@ -10,8 +10,21 @@ class M_perkembangan extends CI_Model
         $this->db->from('fact_donatur fd');
         $this->db->join('dim_donatur dd', 'dd.id_donatur = fd.id_donatur', 'left');
         $this->db->join('dim_waktu dw', 'dw.id_waktu = fd.id_waktu', 'left');
-        $this->db->group_by('dw.bulan');
         $this->db->group_by('dd.segmentasi_pasar');
+        $this->db->where('dw.bulan =', $bulan);
+        $this->db->where('dw.tahun =', $tahun);
+
+        return $this->db->get()->result();
+    }
+
+    public function getDonaturByProduk($bulan, $tahun)
+    {
+        $this->db->select('dw.bulan as bulan, dp.nama_produk, dw.tahun as tahun, dd.segmentasi_pasar, sum(fd.nilai_donasi) as tot_nilai_donasi');
+        $this->db->from('fact_donatur fd');
+        $this->db->join('dim_donatur dd', 'dd.id_donatur = fd.id_donatur', 'left');
+        $this->db->join('dim_produk dp', 'dp.id_produk = fd.id_produk', 'left');
+        $this->db->join('dim_waktu dw', 'dw.id_waktu = fd.id_waktu', 'left');
+        $this->db->group_by('dp.nama_produk');
         $this->db->where('dw.bulan =', $bulan);
         $this->db->where('dw.tahun =', $tahun);
 

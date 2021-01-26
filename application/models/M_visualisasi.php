@@ -44,23 +44,15 @@ class M_visualisasi extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function getDataPenerimaManfaatPerbulan($bulan, $tahun, $jenis_kelamin, $kategori_umur, $kriteria_penerima)
+    public function getDataPenerimaManfaatPerbulan($bulan, $tahun)
     {
-        $this->db->select('count(fp.id_penerima) as jlh_penerima, dw.bulan, dl.kecamatan');
+        $this->db->select('count(fp.id_fact_penerima) as jlh_penerima, dw.bulan, dl.kecamatan');
         $this->db->from('fact_penerima fp');
         $this->db->join('dim_lokasi dl', 'dl.id_lokasi = fp.id_lokasi', 'left');
         $this->db->join('dim_waktu dw', 'dw.id_waktu = fp.id_waktu', 'left');
         $this->db->join('dim_penerima dp', 'dp.id_penerima = fp.id_penerima', 'left');
         $this->db->where('dw.bulan', $bulan);
         $this->db->where('dw.tahun', $tahun);
-        if (!empty($jenis_kelamin)) {
-            $this->db->where('dp.jenis_kelamin', $jenis_kelamin);
-        } else if (!empty($kategori_umur)) {
-            $this->db->where('dp.kategori_umur', $kategori_umur);
-        } else if (!empty($kriteria_penerima)) {
-            $this->db->where('dp.kriteria_penerima', $kriteria_penerima);
-        } else {
-        }
         $this->db->group_by('dl.kecamatan');
         return $this->db->get()->result();
     }
@@ -73,6 +65,41 @@ class M_visualisasi extends CI_Model
         $this->db->join('dim_waktu dw', 'dw.id_waktu = fd.id_waktu', 'left');
         $this->db->where('dw.tahun', $tahun);
         $this->db->group_by('dm.nama_marketer');
+        return $this->db->get()->result();
+    }
+
+    public function getPenerimaByKategoriUmur($bulan, $tahun)
+    {
+        $this->db->select('count(fp.id_penerima) as jlh_penerima, dw.bulan, dp.kategori_umur');
+        $this->db->from('fact_penerima fp');
+        $this->db->join('dim_waktu dw', 'dw.id_waktu = fp.id_waktu', 'left');
+        $this->db->join('dim_penerima dp', 'dp.id_penerima = fp.id_penerima', 'left');
+        $this->db->where('dw.bulan', $bulan);
+        $this->db->where('dw.tahun', $tahun);
+        $this->db->group_by('dp.kategori_umur');
+        return $this->db->get()->result();
+    }
+
+    public function getPenerimaByKriteria($bulan, $tahun)
+    {
+        $this->db->select('count(fp.id_penerima) as jlh_penerima, dw.bulan, dp.kategori_umur, dp.kriteria_penerima, dp.jenis_kelamin');
+        $this->db->from('fact_penerima fp');
+        $this->db->join('dim_waktu dw', 'dw.id_waktu = fp.id_waktu', 'left');
+        $this->db->join('dim_penerima dp', 'dp.id_penerima = fp.id_penerima', 'left');
+        $this->db->where('dw.bulan', $bulan);
+        $this->db->where('dw.tahun', $tahun);
+        $this->db->group_by('dp.kriteria_penerima');
+        return $this->db->get()->result();
+    }
+    public function getPenerimaByJenisKelamin($bulan, $tahun)
+    {
+        $this->db->select('count(fp.id_penerima) as jlh_penerima, dw.bulan, dp.kategori_umur, dp.kriteria_penerima, dp.jenis_kelamin');
+        $this->db->from('fact_penerima fp');
+        $this->db->join('dim_waktu dw', 'dw.id_waktu = fp.id_waktu', 'left');
+        $this->db->join('dim_penerima dp', 'dp.id_penerima = fp.id_penerima', 'left');
+        $this->db->where('dw.bulan', $bulan);
+        $this->db->where('dw.tahun', $tahun);
+        $this->db->group_by('dp.jenis_kelamin');
         return $this->db->get()->result();
     }
 }

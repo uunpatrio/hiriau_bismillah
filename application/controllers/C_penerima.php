@@ -28,20 +28,27 @@ class C_penerima extends CI_Controller
      */
     public function index()
     {
-        $bulan = $this->input->post();
-        $tahun = $this->input->post();
+        $bulan = $this->input->post('bulan');
+        $tahun = $this->input->post('tahun');
         $jenis_kelamin = $this->input->post();
         $kategori_umur = $this->input->post();
         $kriteria = $this->input->post();
 
-        if (empty($bulan) && empty($tahun) && empty($jenis_kelamin) && empty($kategori_umur) && empty($kriteria)) {
-            $view['getDataPenerimaManfaatPerbulan'] = $this->M_visualisasi->getDataPenerimaManfaatPerbulan(date('n'), date('Y'), '', '', '');
+        if (empty($bulan) && empty($tahun)) {
+            $view['getDataPenerimaManfaatPerbulan'] = $this->M_visualisasi->getDataPenerimaManfaatPerbulan(date('n'), date('Y'));
+            $view['getPenerimaByKategoriUmur'] = $this->M_visualisasi->getPenerimaByKategoriUmur(date('n'), date('Y'));
+            $view['getPenerimaByKriteria'] = $this->M_visualisasi->getPenerimaByKriteria(date('n'), date('Y'));
+            $view['getPenerimaByJenisKelamin'] = $this->M_visualisasi->getPenerimaByJenisKelamin(date('n'), date('Y'));
         } else {
-            $view['getDataPenerimaManfaatPerbulan'] = $this->M_visualisasi->getDataPenerimaManfaatPerbulan($bulan, $tahun, $jenis_kelamin, $kategori_umur, $kriteria);
+            $view['getDataPenerimaManfaatPerbulan'] = $this->M_visualisasi->getDataPenerimaManfaatPerbulan($bulan, $tahun);
+            $view['getPenerimaByKategoriUmur'] = $this->M_visualisasi->getPenerimaByKategoriUmur($bulan, $tahun);
+            $view['getPenerimaByKriteria'] = $this->M_visualisasi->getPenerimaByKriteria($bulan, $tahun);
+            $view['getPenerimaByJenisKelamin'] = $this->M_visualisasi->getPenerimaByJenisKelamin($bulan, $tahun);
         }
-        $view['getDataPenerimaManfaatPerbulan'] = $this->M_visualisasi->getDataPenerimaManfaatPerbulan(2, 2019, 'Laki-laki', 'Dewasa', 'Yatim');
         $view['getBln'] = $this->Dim_waktu_model->getWaktu('bulan');
         $view['getThn'] = $this->Dim_waktu_model->getWaktu('tahun');
+        $view['bulan'] = $bulan;
+        $view['tahun'] = $tahun;
 
         $this->load->view('templates/header', $view);
         $this->load->view('templates/sidebar');
