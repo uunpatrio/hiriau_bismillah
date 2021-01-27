@@ -117,7 +117,7 @@ class C_KPI extends CI_Controller
 
     public function delete_donatur($id)
     {
-        $this->M_visualisasi->delete_donasi($id);
+        $this->M_visualisasi->delete_donatur($id);
         $this->session->set_flashdata('success', 'Berhasil Menghapus data !');
         redirect('C_KPI');
     }

@@ -304,7 +304,7 @@
                                                                     <td style="font-size:10px"><?php echo ++$no; ?></td>
                                                                     <td style="font-size:10px"><?php echo $row->nilai_target; ?></td>
                                                                     <td style="font-size:10px"><?php echo $row->tahun; ?></td>
-                                                                    <td style="font-size:10px"><a href="<?php echo base_url('C_KPI/delete_donasi/') . $row->id_kpi; ?>" class="btn btn-danger btn-sm" style="font-size: 10px;">Hapus</a></td>
+                                                                    <td style="font-size:10px"><a href="<?php echo base_url('C_KPI/delete_donasi/') . $row->id_kpi; ?>" onclick="alert('Apakah anda yakin akan menghapus ?')" class="btn btn-danger btn-sm" style="font-size: 10px;">Hapus</a></td>
                                                                 </tr>
                                                             <?php } ?>
                                                         </tbody>
@@ -358,7 +358,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success btn-sm">Simpan</button>
+                                        <button type="submit" onclick="alert('Apakah anda sudah yakin ?')" class="btn btn-success btn-sm">Simpan</button>
 
                                     </div>
                                     <?php echo form_close() ?>
@@ -402,7 +402,7 @@
                                                                     <td style="font-size:10px"><?php echo ++$no; ?></td>
                                                                     <td style="font-size:10px"><?php echo $row->nilai_target; ?></td>
                                                                     <td style="font-size:10px"><?php echo $row->tahun; ?></td>
-                                                                    <td style="font-size:10px"><a href="<?php echo base_url('C_KPI/delete_donatur/') . $row->id_kpi; ?>" class="btn btn-danger btn-sm" style="font-size: 10px;">Hapus</a></td>
+                                                                    <td style="font-size:10px"><a href="<?php echo base_url('C_KPI/delete_donatur/') . $row->id_kpi; ?>" class="btn btn-danger btn-sm" onclick="alert('Apakah anda yakin akan menghapus ?')" style="font-size: 10px;">Hapus</a></td>
                                                                 </tr>
                                                             <?php } ?>
                                                         </tbody>
@@ -455,7 +455,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success btn-sm">Simpan</button>
+                                        <button type="submit" onclick="alert('Apakah anda sudah yakin ?')" class="btn btn-success btn-sm">Simpan</button>
 
                                     </div>
                                     <?php echo form_close() ?>
@@ -499,7 +499,7 @@
                                                                     <td style="font-size:10px"><?php echo ++$no; ?></td>
                                                                     <td style="font-size:10px"><?php echo $row->nilai_target; ?></td>
                                                                     <td style="font-size:10px"><?php echo $row->tahun; ?></td>
-                                                                    <td style="font-size:10px"><a href="<?php echo base_url('C_KPI/delete_penerima_manfaat/') . $row->id_kpi; ?>" class="btn btn-danger btn-sm" style="font-size: 10px;">Hapus</a></td>
+                                                                    <td style="font-size:10px"><a href="<?php echo base_url('C_KPI/delete_penerima_manfaat/') . $row->id_kpi; ?>" class="btn btn-danger btn-sm" onclick="alert('Apakah anda yakin akan menghapus ?')" style="font-size: 10px;">Hapus</a></td>
                                                                 </tr>
                                                             <?php } ?>
                                                         </tbody>
@@ -552,7 +552,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success btn-sm">Simpan</button>
+                                        <button type="submit" onclick="alert('Apakah anda sudah yakin ?')" class="btn btn-success btn-sm">Simpan</button>
 
                                     </div>
                                     <?php echo form_close() ?>
