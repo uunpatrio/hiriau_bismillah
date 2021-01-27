@@ -27,8 +27,9 @@ class Home extends CI_Controller
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($tahun = '')
 	{
+
 
 		date_default_timezone_set('Asia/Jakarta');
 		if (empty($this->input->post('filter')) && empty($this->input->post('ftahun'))) {
@@ -40,6 +41,18 @@ class Home extends CI_Controller
 				'getdataperkembangan' => $this->M_perkembangan->grafik_perkembangan_donatur($this->input->post('filter'), $this->input->post('ftahun'))
 			);
 		}
+
+		if (empty($tahun)) {
+			$tahun = date('Y');
+		}
+		$data['getTop10DonaturTertinggi'] = $this->M_visualisasi->getTop10DonaturTertinggi($tahun);
+		$data['getTop10MarketerTertinggi'] = $this->M_visualisasi->getTop10MarketerTertinggi($tahun);
+		$data['countDonatur'] = $this->M_visualisasi->countDonatur();
+		$data['countPenerimaDonasi'] = $this->M_visualisasi->countPenerimaDonasi();
+		$data['countMarketer'] = $this->M_visualisasi->countMarketer();
+		$data['countProduk'] = $this->M_visualisasi->countProduk();
+
+		$data['tahun'] = $tahun;
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');

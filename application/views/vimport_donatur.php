@@ -20,11 +20,18 @@
             <div class="card-body">
                 <?= form_open_multipart('Import_donatur/uploaddata') ?>
                 <div class="row">
+                    <div class="col-md-12">
+                        <small for="">Hanya mendukung format Excel* <br> Silahkan download format excel dibawah ini ! </small> <a href="">Download File Here</a>
+                        <br>
+                        <br>
+                    </div>
                     <div class="col-4">
                         <input type="file" class="form-control-file" id="importexcel" name="importexcel" accept=".xlsx,.xls" required>
                     </div>
                     <div class="col">
-                        <button type="submit" class="btn btn-primary">Import</button>
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <li class="fa fa-upload"></li> Import
+                        </button>
                     </div>
                     <div class="col">
                         <?= $this->session->flashdata('pesan'); ?>

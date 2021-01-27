@@ -263,6 +263,63 @@ class M_visualisasi extends CI_Model
         $this->db->where('id_kpi', $id);
         $this->db->delete('kpi_nilai_penerima_manfaat');
     }
+
+    public function getTop10DonaturTertinggi($tahun)
+    {
+        $this->db->select('dd.nama_donatur, count(dd.nama_donatur) as tot_donatur');
+        $this->db->from('fact_donatur fd');
+        $this->db->join('dim_waktu dw', 'dw.id_waktu = fd.id_waktu', 'left');
+        $this->db->join('dim_donatur dd', 'dd.id_donatur = fd.id_donatur', 'left');
+        $this->db->limit(10);
+        $this->db->group_by('dd.nama_donatur');
+        $this->db->order_by('tot_donatur', 'desc');
+        $this->db->where('dw.tahun', $tahun);
+        return $this->db->get()->result();
+    }
+
+
+    public function getTop10MarketerTertinggi($tahun)
+    {
+        $this->db->select('m.nama_marketer, count(m.nama_marketer) as tot_marketer');
+        $this->db->from('fact_donatur fd');
+        $this->db->join('dim_waktu dw', 'dw.id_waktu = fd.id_waktu', 'left');
+        $this->db->join('dim_marketer m', 'm.id_marketer = fd.id_marketer', 'left');
+        $this->db->limit(10);
+        $this->db->group_by('m.nama_marketer');
+        $this->db->order_by('tot_marketer', 'desc');
+        $this->db->where('dw.tahun', $tahun);
+        return $this->db->get()->result();
+    }
+
+    public function countDonatur()
+    {
+        $this->db->select('count(id_donatur) as tot_donatur');
+        $this->db->from('dim_donatur');
+        return $this->db->get()->result();
+    }
+
+    public function countPenerimaDonasi()
+    {
+        $this->db->select('count(id_penerima) as tot_penerima');
+        $this->db->from('dim_penerima');
+        return $this->db->get()->result();
+    }
+
+    public function countMarketer()
+    {
+        $this->db->select('count(id_marketer) as tot_marketer');
+        $this->db->from('dim_marketer');
+        $this->db->group_by('nama_marketer');
+        return $this->db->get()->result();
+    }
+
+    public function countProduk()
+    {
+        $this->db->select('count(id_produk) as tot_produk');
+        $this->db->from('dim_produk');
+        $this->db->group_by('nama_produk');
+        return $this->db->get()->result();
+    }
 }
 
 /* End of file M_visualisasi.php */
