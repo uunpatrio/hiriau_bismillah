@@ -21,7 +21,7 @@
                 <?= form_open_multipart('Import_donatur/uploaddata') ?>
                 <div class="row">
                     <div class="col-4">
-                        <input type="file" class="form-control-file" id="importexcel" name="importexcel" accept=".xlsx,.xls">
+                        <input type="file" class="form-control-file" id="importexcel" name="importexcel" accept=".xlsx,.xls" required>
                     </div>
                     <div class="col">
                         <button type="submit" class="btn btn-primary">Import</button>

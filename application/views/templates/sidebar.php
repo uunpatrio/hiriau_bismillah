@@ -6,7 +6,9 @@
             <li><a href="<?php echo base_url('Home') ?>" class="nav-link">
                     <i class="fa fa-dashboard"></i> Dashboard </a>
             </li>
-
+            <li><a href="<?php echo base_url('C_KPI') ?>" class="nav-link">
+                    <i class="fa fa-line-chart"></i> Key Performance </a>
+            </li>
             <li><a><i class="fa fa-bar-chart"></i> Representasi Data <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="<?php echo base_url('C_perkembangan_donatur') ?>">Segmentasi Pasar</a></li>

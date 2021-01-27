@@ -37,6 +37,7 @@ class C_perbandingan extends CI_Controller
 
         $data['getMarketer'] = $this->M_visualisasi->getMarketer($tahun);
         $data['getMarketer1'] = $this->M_visualisasi->getMarketer($tahun);
+        $data['getPerbandinganDonasiMasukKeluar'] = $this->M_visualisasi->getPerbandinganDonasiMasukKeluar(2019);
 
         $data['tahun'] = $tahun;
 
