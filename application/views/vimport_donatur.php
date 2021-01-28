@@ -21,7 +21,7 @@
                 <?= form_open_multipart('Import_donatur/uploaddata') ?>
                 <div class="row">
                     <div class="col-md-12">
-                        <small for="">Hanya mendukung format Excel* <br> Silahkan download format excel dibawah ini ! </small> <a href="">Download File Here</a>
+                        <small for="">Hanya mendukung format Excel* <br> Silahkan download format excel dibawah ini ! </small> <a href="<?php echo base_url('format_excel/donatur.xlsx') ?>" target="_blank">Download File Here</a>
                         <br>
                         <br>
                     </div>
