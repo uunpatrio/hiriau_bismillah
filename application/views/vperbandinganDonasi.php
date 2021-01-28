@@ -41,7 +41,7 @@
             "fixedPosition": true
         },
         "graphs": [{
-            "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>Jumlah Donasi Masuk:<b>[[y]]</b><br>value:<b>[[value]]</b></div>",
+            "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>Jumlah Donasi Masuk:<b>[[y]]</b></div>",
             "bullet": "round",
             "maxBulletSize": 10,
             "lineAlpha": 0.8,
@@ -52,7 +52,7 @@
             "yField": "ay",
             "valueField": "aValue"
         }, {
-            "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>Jumlah Donasi Keluar:<b>[[y]]</b><br>value:<b>[[value]]</b></div>",
+            "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>Jumlah Donasi Keluar:<b>[[y]]</b></div>",
             "bullet": "round",
             "maxBulletSize": 10,
             "lineAlpha": 0.8,
@@ -99,7 +99,7 @@
                     <div class="btn-group btn-group-lg btn-group-solid margin-bottom-10">
                         <button type="button" style="font-size: 11px;" class="btn btn-info">Pilih Tahun</button>
                         <?php for ($i = (date('Y') - 4); $i <= date('Y'); $i++) { ?>
-                            <a href="<?php print site_url(); ?>C_marketer/index/<?php print $i; ?>" type="button" style="font-size: 11px;" class="btn btn-primary"><?php print $i; ?></a>
+                            <a href="<?php print site_url(); ?>C_perbandingan/index/<?php print $i; ?>" type="button" style="font-size: 11px;" class="btn btn-primary"><?php print $i; ?></a>
                         <?php } ?>
                     </div>
                 </div>

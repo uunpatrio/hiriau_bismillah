@@ -121,7 +121,7 @@ class M_visualisasi extends CI_Model
     {
         $this->db->select('sum(fd.nilai_donasi) as total_donasi_masuk, dw.tahun, count(fd.id_fact_donatur) as jlh_donatur, count(fp.id_fact_penerima) as jlh_penerima, sum(fp.donasi_diterima) as total_donasi_keluar, dw.bulan, dw.tahun');
         $this->db->from('fact_donatur fd, fact_penerima fp');
-        $this->db->join('dim_waktu dw', 'dw.id_waktu = fd.id_waktu', 'left');
+        $this->db->join('dim_waktu dw', 'dw.id_waktu = fp.id_waktu', 'left');
         $this->db->group_by('dw.bulan');
         $this->db->where('dw.tahun', $tahun);
         return $this->db->get()->result();
@@ -320,6 +320,13 @@ class M_visualisasi extends CI_Model
         $this->db->select('count(id_produk) as tot_produk');
         $this->db->from('dim_produk');
         $this->db->group_by('nama_produk');
+        return $this->db->get()->result();
+    }
+
+    public function countDonasi()
+    {
+        $this->db->select('sum(nilai_donasi) as total_donasi');
+        $this->db->from('fact_donatur');
         return $this->db->get()->result();
     }
 }

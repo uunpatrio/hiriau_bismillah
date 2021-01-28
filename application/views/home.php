@@ -122,29 +122,29 @@
         <div class="top_tiles">
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 " style="width: 300px;">
                 <div class="tile-stats">
-                    <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-                    <div class="count"><?php echo empty($countDonatur[0]->tot_donatur) ? '0' : $countDonatur[0]->tot_donatur; ?></div>
+                    <div class="icon"><i class="fa fa-user" style="font-size: 35px;"></i></div>
+                    <div class="count" style="font-size: 25px;"><?php echo empty($countDonatur[0]->tot_donatur) ? '0' : $countDonatur[0]->tot_donatur; ?></div>
                     <p>Total Donatur</p>
                 </div>
             </div>
             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 " style="width: 300px;">
                 <div class="tile-stats">
-                    <div class="icon"><i class="fa fa-comments-o"></i></div>
-                    <div class="count"><?php echo empty($countPenerimaDonasi[0]->tot_penerima) ? '0' : $countPenerimaDonasi[0]->tot_penerima; ?></div>
+                    <div class="icon"><i class="fa fa-archive" style="font-size: 35px;"></i></div>
+                    <div class="count" style="font-size: 25px;"><?php echo empty($countPenerimaDonasi[0]->tot_penerima) ? '0' : $countPenerimaDonasi[0]->tot_penerima; ?></div>
                     <p>Total Penerima Donasi</p>
                 </div>
             </div>
-            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 " style="width: 300px;">
+            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 " style="width: 250px;">
                 <div class="tile-stats">
-                    <div class="icon"><i class="fa fa-comments-o"></i></div>
-                    <div class="count"><?php echo empty($countMarketer[0]->tot_marketer) ? '0' : $countMarketer[0]->tot_marketer; ?></div>
+                    <div class="icon"><i class="fa fa-child" style="font-size: 35px;"></i></div>
+                    <div class="count" style="font-size: 25px;"><?php echo empty($countMarketer[0]->tot_marketer) ? '0' : $countMarketer[0]->tot_marketer; ?></div>
                     <p>Jumlah Marketer</p>
                 </div>
             </div>
-            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 " style="width: 300px;">
+            <div class="animated flipInY col-lg-4 col-md-3 col-sm-6 " style="width: 300px;">
                 <div class="tile-stats">
-                    <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                    <div class="count"><?php echo empty($countProduk[0]->tot_produk) ? '0' : $countProduk[0]->tot_produk; ?></div>
+                    <div class="icon"><i class="fa fa-dollar" style="font-size: 35px;"></i></div>
+                    <div class="count" style="font-size: 25px;"><?php echo empty($countDonasi[0]->total_donasi) ? '0' : number_format($countDonasi[0]->total_donasi); ?></div>
                     <p>Total Produk</p>
                 </div>
             </div>

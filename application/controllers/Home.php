@@ -51,6 +51,7 @@ class Home extends CI_Controller
 		$data['countPenerimaDonasi'] = $this->M_visualisasi->countPenerimaDonasi();
 		$data['countMarketer'] = $this->M_visualisasi->countMarketer();
 		$data['countProduk'] = $this->M_visualisasi->countProduk();
+		$data['countDonasi'] = $this->M_visualisasi->countDonasi();
 
 		$data['tahun'] = $tahun;
 
