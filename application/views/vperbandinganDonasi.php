@@ -41,7 +41,7 @@
             "fixedPosition": true
         },
         "graphs": [{
-            "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>y:<b>[[y]]</b><br>value:<b>[[value]]</b></div>",
+            "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>Jumlah Donasi Masuk:<b>[[y]]</b><br>value:<b>[[value]]</b></div>",
             "bullet": "round",
             "maxBulletSize": 10,
             "lineAlpha": 0.8,
@@ -52,7 +52,7 @@
             "yField": "ay",
             "valueField": "aValue"
         }, {
-            "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>y:<b>[[y]]</b><br>value:<b>[[value]]</b></div>",
+            "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>Jumlah Donasi Keluar:<b>[[y]]</b><br>value:<b>[[value]]</b></div>",
             "bullet": "round",
             "maxBulletSize": 10,
             "lineAlpha": 0.8,
@@ -73,7 +73,6 @@
         }],
         "allLabels": [],
         "titles": [],
-
         "dataProvider": [
             <?php foreach ($getPerbandinganDonasiMasukKeluar as $row) { ?> {
                     "date": <?php echo $row->bulan; ?>,
@@ -84,7 +83,6 @@
                 },
             <?php } ?>
         ],
-
         "chartCursor": {
             "pan": true,
             "cursorAlpha": 0,

@@ -24,7 +24,7 @@
                 "url": "#",
                 "description": "Klik untuk melihat detail",
                 "months": [
-                    <?php $perkembanganDonaturBySegmentasi = $this->M_visualisasi->perkembanganDonaturBySegmentasi($row->bulan); ?>
+                    <?php $perkembanganDonaturBySegmentasi = $this->M_visualisasi->perkembanganDonaturBySegmentasi($row->bulan, $row->tahun); ?>
                     <?php foreach ($perkembanganDonaturBySegmentasi as $r) { ?> {
                             "category": "<?php echo ($r->segmentasi_pasar); ?>",
                             "income": <?php echo $r->jumlah_segmentasi; ?>
@@ -33,9 +33,7 @@
                 ]
             },
         <?php } ?>
-
     ];
-
     var chart = AmCharts.makeChart("chartdiv1", {
         "type": "serial",
         "theme": "none",

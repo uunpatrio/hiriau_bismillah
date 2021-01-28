@@ -25,15 +25,16 @@ class M_visualisasi extends CI_Model
 
     public function getBulanByDataSegmentasi($tahun)
     {
-        $this->db->select('dw.bulan, count(fd.id_donatur) as jlh_donatur');
+        $this->db->select('dw.bulan,dw.tahun, count(dd.segmentasi_pasar) as jlh_donatur');
         $this->db->from('fact_donatur fd');
         $this->db->join('dim_waktu dw', 'dw.id_waktu = fd.id_waktu', 'left');
+        $this->db->join('dim_donatur dd', 'dd.id_donatur = fd.id_donatur', 'left');
         $this->db->group_by('dw.bulan');
         $this->db->where('dw.tahun', $tahun);
         return $this->db->get()->result();
     }
 
-    public function perkembanganDonaturBySegmentasi($bulan)
+    public function perkembanganDonaturBySegmentasi($bulan, $tahun)
     {
         $this->db->select('dd.nama_donatur, dd.segmentasi_pasar, dw.bulan, dw.tahun, count(fd.id_fact_donatur) as jumlah_segmentasi');
         $this->db->from('fact_donatur fd');
@@ -41,6 +42,7 @@ class M_visualisasi extends CI_Model
         $this->db->join('dim_donatur dd', 'dd.id_donatur = fd.id_donatur', 'left');
         $this->db->group_by('dd.segmentasi_pasar');
         $this->db->where('dw.bulan', $bulan);
+        $this->db->where('dw.tahun', $tahun);
         return $this->db->get()->result();
     }
 
