@@ -106,7 +106,7 @@
                 "description": "Klik untuk melihat detail",
                 "months": [
                     <?php
-                    $getDonaturProdukByMarketer = $this->M_visualisasi->getDonaturProdukByMarketer($b->nama_marketer);
+                    $getDonaturProdukByMarketer = $this->M_visualisasi->getDonaturProdukByMarketer($b->nama_marketer, $b->tahun);
                     ?>
                     <?php foreach ($getDonaturProdukByMarketer as $row) { ?> {
                             "category": "<?php echo $row->nama_produk; ?>",
