@@ -17,16 +17,16 @@ class C_perbandingan extends CI_Controller
      * Index Page for this controller.
      *
      * Maps to the following URL
-     * 		http://example.com/index.php/welcome
+     * http: //example.com/index.php/welcome
      *	- or -
-     * 		http://example.com/index.php/welcome/index
+     * http: //example.com/index.php/welcome/index
      *	- or -
      * Since this controller is set as the default controller in
      * config/routes.php, it's displayed at http://example.com/
      *
      * So any other public methods not prefixed with an underscore will
      * map to /index.php/welcome/<method_name>
-     * @see https://codeigniter.com/user_guide/general/urls.html
+     * @see https: //codeigniter.com/user_guide/general/urls.html
      */
     public function index($tahun = '')
     {
@@ -35,9 +35,11 @@ class C_perbandingan extends CI_Controller
             $tahun = date('Y');
         }
 
-        $data['getMarketer'] = $this->M_visualisasi->getMarketer($tahun);
-        $data['getMarketer1'] = $this->M_visualisasi->getMarketer($tahun);
-        $data['getPerbandinganDonasiMasukKeluar'] = $this->M_visualisasi->getPerbandinganDonasiMasukKeluar($tahun);
+        $data['getMarketer']               = $this->M_visualisasi->getMarketer($tahun);
+        $data['getMarketer1']              = $this->M_visualisasi->getMarketer($tahun);
+        $data['getTotalDonasiMasuk']       = $this->M_visualisasi->getTotalDonasiMasuk($tahun);
+        $data['getTotalDonasiTersalurkan'] = $this->M_visualisasi->getTotalDonasiTersalurkan($tahun);
+
 
         $data['tahun'] = $tahun;
 

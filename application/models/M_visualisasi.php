@@ -124,6 +124,26 @@ class M_visualisasi extends CI_Model
         $this->db->select('sum(fd.nilai_donasi) as total_donasi_masuk, dw.tahun, count(fd.id_fact_donatur) as jlh_donatur, count(fp.id_fact_penerima) as jlh_penerima, sum(fp.donasi_diterima) as total_donasi_keluar, dw.bulan, dw.tahun');
         $this->db->from('fact_donatur fd, fact_penerima fp');
         $this->db->join('dim_waktu dw', 'dw.id_waktu = fp.id_waktu', 'left');
+        $this->db->group_by('dw.tanggal');
+        $this->db->where('dw.tahun', $tahun);
+        return $this->db->get()->result();
+    }
+
+    public function getTotalDonasiMasuk($tahun)
+    {
+        $this->db->select('sum(fd.nilai_donasi) as tot_donasi, dw.tahun, dw.bulan');
+        $this->db->from('fact_donatur fd');
+        $this->db->join('dim_waktu dw', 'dw.id_waktu = fd.id_waktu', 'left');
+        $this->db->group_by('dw.bulan');
+        $this->db->where('dw.tahun', $tahun);
+        return $this->db->get()->result();
+    }
+
+    public function getTotalDonasiTersalurkan($tahun)
+    {
+        $this->db->select('sum(fp.donasi_diterima) as tot_donasi, dw.tahun, dw.bulan');
+        $this->db->from('fact_penerima fp');
+        $this->db->join('dim_waktu dw', 'dw.id_waktu = fp.id_waktu', 'left');
         $this->db->group_by('dw.bulan');
         $this->db->where('dw.tahun', $tahun);
         return $this->db->get()->result();

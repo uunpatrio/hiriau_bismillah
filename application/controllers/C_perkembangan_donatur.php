@@ -56,7 +56,6 @@ class C_perkembangan_donatur extends CI_Controller
             $tahun = date('Y');
         }
 
-        $data['tahun'] = $tahun;
         $data = array(
             'getdataperkembangan' => $this->M_perkembangan->grafik_perkembangan_donasi(1)
         );
@@ -66,6 +65,7 @@ class C_perkembangan_donatur extends CI_Controller
 
         $data['getBulan'] = $this->Dim_waktu_model->getWaktu('bulan');
         $data['getTahun'] = $this->Dim_waktu_model->getWaktu('tahun');
+        $data['tahun'] = $tahun;
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         $this->load->view('vperkembangan_donasi');
