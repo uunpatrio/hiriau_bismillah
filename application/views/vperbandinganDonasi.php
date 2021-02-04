@@ -67,7 +67,7 @@
         var lineSeries = chart.series.push(new am4charts.LineSeries());
         lineSeries.dataFields.categoryX = "year";
         lineSeries.dataFields.valueY = "income";
-        lineSeries.tooltipText = "Total Gaji Bulan {year} : {valueY.value}";
+        lineSeries.tooltipText = "Donasi Masuk Bulan {year} : {valueY.value}";
         lineSeries.fillOpacity = 0.5;
         lineSeries.strokeWidth = 3;
         lineSeries.propertyFields.stroke = "lineColor";
@@ -129,7 +129,7 @@
         var lineSeries = chart.series.push(new am4charts.LineSeries());
         lineSeries.dataFields.categoryX = "year";
         lineSeries.dataFields.valueY = "income";
-        lineSeries.tooltipText = "Total Gaji Bulan {year} : {valueY.value}";
+        lineSeries.tooltipText = "Donasi Tersalurkan Bulan {year} : {valueY.value}";
         lineSeries.fillOpacity = 0.5;
         lineSeries.strokeWidth = 3;
         lineSeries.propertyFields.stroke = "lineColor";
