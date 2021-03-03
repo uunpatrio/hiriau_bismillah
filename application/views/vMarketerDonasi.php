@@ -129,14 +129,18 @@
     var chartData = [
         <?php foreach ($getMarketerPertahun as $row) { ?> {
                 "category": <?php echo $row->tahun; ?>,
-                "income": <?php echo number_format_satuan($row->tot_marketer); ?>,
+                "income": <?php echo ($row->tot_marketer); ?>,
+                "incomeLabels": "<?php echo number_format_satuan($row->tot_marketer); ?>",
+
                 "url": "#",
                 "description": "Klik untuk melihat detail",
                 "months": [
                     <?php $MarketerDonasiByTahun = $this->M_visualisasi->MarketerDonasiByTahun($row->tahun); ?>
                     <?php foreach ($MarketerDonasiByTahun as $r) { ?> {
                             "category": "<?php echo getBulan($r->bulan); ?>",
-                            "income": <?php echo number_format_satuan($r->total_marketer); ?>
+                            "income": <?php echo ($r->total_marketer); ?>,
+                            "incomeLabels": "<?php echo number_format_satuan($r->total_marketer); ?>"
+
                         },
                     <?php } ?>
                 ]
@@ -167,7 +171,7 @@
             "type": "column",
             "valueField": "income",
             "urlField": "url",
-            "labelText": "Jumlah : [[income]]"
+            "labelText": "Jumlah : [[incomeLabels]]"
         }],
         "categoryField": "category",
         "categoryAxis": {
