@@ -57,7 +57,6 @@
         categoryAxis.startLocation = 0.4;
         categoryAxis.endLocation = 0.6;
 
-
         var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         valueAxis.tooltip.disabled = true;
         valueAxis.renderer.line.opacity = 0;
@@ -78,11 +77,15 @@
         bullet.circle.fill = am4core.color("#fff");
         bullet.circle.strokeWidth = 3;
 
+        var latitudeLabel = lineSeries.bullets.push(new am4charts.LabelBullet());
+        latitudeLabel.label.text = "{income}";
+        latitudeLabel.label.horizontalCenter = "left";
+        latitudeLabel.label.dx = 14;
+
         chart.cursor = new am4charts.XYCursor();
         chart.cursor.behavior = "panX";
         chart.cursor.lineX.opacity = 0;
         chart.cursor.lineY.opacity = 0;
-
         chart.scrollbarX = new am4core.Scrollbar();
         chart.scrollbarX.parent = chart.bottomAxesContainer;
 
@@ -139,6 +142,11 @@
         bullet.circle.radius = 6;
         bullet.circle.fill = am4core.color("#fff");
         bullet.circle.strokeWidth = 3;
+
+        var latitudeLabel = lineSeries.bullets.push(new am4charts.LabelBullet());
+        latitudeLabel.label.text = "{income}";
+        latitudeLabel.label.horizontalCenter = "left";
+        latitudeLabel.label.dx = 14;
 
         chart.cursor = new am4charts.XYCursor();
         chart.cursor.behavior = "panX";

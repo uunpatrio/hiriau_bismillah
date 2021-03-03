@@ -138,6 +138,7 @@ function seo_title($s)
     return $s;
 }
 
+
 function convert_to($array)
 {
     foreach ($array as $key => $value) {
@@ -161,66 +162,6 @@ function convert_to_int($array)
     return $array;
 }
 
-function _sendEmail($param = '', $subject, $isi, $pengguna, $aksi)
-{
-    if ($param == 'tambah') {
-        $CI = &get_instance();
-        $config = [
-            'protocol'    => 'smtp',
-            'smtp_host'   => 'ssl://smtp.googlemail.com',
-            'smtp_user'   => 'fitraarrafiq@gmail.com',
-            'smtp_pass'   => 'jawatengah',
-            'smtp_port'   => 465,
-            'mailtype'    => 'html',
-            'charset'     => 'utf-8',
-            'newline'     => "\r\n"
-        ];
-        $email = $CI->User->get_email_user();
-        $CI->load->library('email', $config);
-        $CI->email->from('fitraarrafiq@gmail.com', 'Fitra Arrafiq');
-        foreach ($email as $row) {
-            $var[] = $row->email;
-        }
-        $CI->email->to('fitra16si@mahasiswa.pcr.ac.id');
-        $CI->email->subject($subject);
-        $CI->email->message('Pengguna dengan nama ' . $pengguna . ' ' . $aksi . ' ' . $isi . ' dan transaksi Berhasil dilakukan pada sistem Pemasaran Kerja Sama dan Alumni Politeknik Caltex Riau, silahkan cek dengan mengunjungi link berikut kbp.pcr.ac.id.<br><br><br> Do not reply this email !');
-
-        if ($CI->email->send()) {
-            return true;
-        } else {
-            echo $CI->email->print_debugger();
-            die;
-        }
-    } else if ($param == 'ubah') {
-        $CI = &get_instance();
-        $config = [
-            'protocol'    => 'smtp',
-            'smtp_host'   => 'ssl://smtp.googlemail.com',
-            'smtp_user'   => 'fitraarrafiq@gmail.com',
-            'smtp_pass'   => 'jawatengah',
-            'smtp_port'   => 465,
-            'mailtype'    => 'html',
-            'charset'     => 'utf-8',
-            'newline'     => "\r\n"
-        ];
-        // $email = $CI->B_user_login_model->get_email_user();
-        $CI->load->library('email', $config);
-        $CI->email->from('fitraarrafiq@gmail.com', 'Fitra Arrafiq');
-        // foreach ($email as $row) {
-        //     $var[] = $row->email;
-        // }
-        $CI->email->to('fitra16si@mahasiswa.pcr.ac.id');
-        $CI->email->subject($subject);
-        $CI->email->message('Pengguna dengan nama ' . $pengguna . ' ' . $aksi . ' ' . $isi . ' dan transaksi Berhasil dilakukan pada sistem Pemasaran Kerja Sama dan Alumni Politeknik Caltex Riau, silahkan cek dengan mengunjungi link berikut kbp.pcr.ac.id.<br><br><br> Do not reply this email !');
-
-        if ($CI->email->send()) {
-            return true;
-        } else {
-            echo $CI->email->print_debugger();
-            die;
-        }
-    }
-}
 
 function count_time_since($original)
 {

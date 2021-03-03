@@ -14,6 +14,7 @@
                     <li><a href="<?php echo base_url('C_perkembangan_donatur') ?>">Segmentasi Pasar</a></li>
                     <li><a href="<?php echo base_url('C_perkembangan_donatur/donasi') ?>">Perkembangan Donatur</a></li>
                     <li><a href="<?php echo base_url('C_perbandingan') ?>">Perbandingan donasi Masuk dengan Donasi Tersalurkan</a></li>
+                    <li><a href="<?php echo base_url('C_marketer_donasi/index/') ?>">Marketer Terhadap Donasi</a></li>
                     <li><a href="<?php echo base_url('C_penerima') ?>">Persebaran Penerima Manfaat</a></li>
                     <li><a href="<?php echo base_url('C_marketer/index/') ?>">Marketer Teraktif</a></li>
                 </ul>

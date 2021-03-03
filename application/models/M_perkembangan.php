@@ -31,6 +31,8 @@ class M_perkembangan extends CI_Model
         return $this->db->get()->result();
     }
 
+
+
     public function grafikPerkembanganDonaturPertahun()
     {
         $this->db->select('fd.id_fact_donatur, dw.tahun');
