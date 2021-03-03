@@ -127,19 +127,18 @@
 <!-- Bagian Marketer -->
 <script>
     var chartData = [
-        <?php foreach ($getMarketerPertahun as $row) { ?> {
+        <?php foreach ($getDonaturPertahun as $row) { ?> {
                 "category": <?php echo $row->tahun; ?>,
-                "income": <?php echo ($row->tot_marketer); ?>,
-                "incomeLabels": "<?php echo number_format_satuan($row->tot_marketer); ?>",
-
+                "income": <?php echo ($row->tot_donatur); ?>,
+                "incomeLabels": "<?php echo ($row->tot_donatur); ?>",
                 "url": "#",
                 "description": "Klik untuk melihat detail",
                 "months": [
-                    <?php $MarketerDonasiByTahun = $this->M_visualisasi->MarketerDonasiByTahun($row->tahun); ?>
-                    <?php foreach ($MarketerDonasiByTahun as $r) { ?> {
+                    <?php $donaturByTahun = $this->M_visualisasi->donaturByTahun($row->tahun); ?>
+                    <?php foreach ($donaturByTahun as $r) { ?> {
                             "category": "<?php echo getBulan($r->bulan); ?>",
-                            "income": <?php echo ($r->total_marketer); ?>,
-                            "incomeLabels": "<?php echo number_format_satuan($r->total_marketer); ?>"
+                            "income": <?php echo ($r->tot_donatur); ?>,
+                            "incomeLabels": "<?php echo number_format_satuan($r->tot_donatur); ?>"
 
                         },
                     <?php } ?>
@@ -158,7 +157,7 @@
         "marginTop": 10,
         "marginBottom": 56,
         "titles": [{
-            "text": "Data Marketer Pertahun"
+            "text": "Data Donatur Pertahun"
         }],
         "dataProvider": chartData,
         "startDuration": 1,
@@ -189,7 +188,7 @@
             event.chart.dataProvider = event.item.dataContext.months;
 
             // update the chart title
-            event.chart.titles[0].text = 'Data Marketer Tahun ' + event.item.dataContext.category + '';
+            event.chart.titles[0].text = 'Data Donatur Tahun ' + event.item.dataContext.category + '';
 
             // let's add a label to go back to yearly data
             event.chart.addLabel(
@@ -212,7 +211,7 @@
     // function which resets the chart back to yearly data
     function resetChart() {
         chart.dataProvider = chartData;
-        chart.titles[0].text = 'Data Marketer';
+        chart.titles[0].text = 'Data Donatur';
 
         // remove the "Go back" label
         chart.allLabels = [];
@@ -227,7 +226,7 @@
     <div class="col-md-12 col-sm-12">
         <div class="x_panel">
             <div class="x_title">
-                <h5>Perbandingan Data Marketer Terhadap Donasi</h5>
+                <h5>Perbandingan Data Donatur Terhadap Donasi</h5>
                 <ul class="nav navbar-left panel_toolbox">
                 </ul>
                 <div class="clearfix"></div>
@@ -257,7 +256,7 @@
                                 <div class="x_title">
                                     <div class=" btn-group-sm" role="group" aria-label="...">
                                         <h4>
-                                            <li class="fa fa-table"></li> Data Marketer <small>(Berdasarkan Data Tahunan)</small>
+                                            <li class="fa fa-table"></li> Jumlah Donatur <small>(Berdasarkan Data Tahunan)</small>
                                         </h4>
                                     </div>
                                     <ul class="nav navbar-left panel_toolbox">

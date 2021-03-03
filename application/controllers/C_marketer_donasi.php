@@ -36,7 +36,7 @@ class C_marketer_donasi extends CI_Controller
 
         $data['grafikPerkembanganDonaturPertahun'] = $this->M_perkembangan->grafikPerkembanganDonaturPertahun();
         $data['segmentasiPasar'] = $this->M_visualisasi->segmentasiPasar();
-        $data['getMarketerPertahun'] = $this->M_visualisasi->getMarketerPertahun();
+        $data['getDonaturPertahun'] = $this->M_visualisasi->getDonaturPertahun();
         $data['getBulan'] = $this->Dim_waktu_model->getWaktu('bulan');
         $data['getTahun'] = $this->Dim_waktu_model->getWaktu('tahun');
 
