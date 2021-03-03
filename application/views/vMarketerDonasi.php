@@ -91,7 +91,7 @@
             event.chart.dataProvider = event.item.dataContext.months;
 
             // update the chart title
-            event.chart.titles[0].text = 'Data Donasi Perbulan Tahun ' + event.item.dataContext.category + '';
+            event.chart.titles[0].text = 'Data Donasi Tahun ' + event.item.dataContext.category + '';
 
             // let's add a label to go back to yearly data
             event.chart.addLabel(
@@ -114,7 +114,7 @@
     // function which resets the chart back to yearly data
     function resetChart1() {
         chart.dataProvider = chartData1;
-        chart.titles[0].text = 'Data Donasi Pertahun';
+        chart.titles[0].text = 'Data Donasi';
 
         // remove the "Go back" label
         chart.allLabels = [];
@@ -167,7 +167,7 @@
             "type": "column",
             "valueField": "income",
             "urlField": "url",
-            "labelText": "[[income]] Marketer"
+            "labelText": "Jumlah : [[income]]"
         }],
         "categoryField": "category",
         "categoryAxis": {
@@ -185,7 +185,7 @@
             event.chart.dataProvider = event.item.dataContext.months;
 
             // update the chart title
-            event.chart.titles[0].text = 'Segmentasi Perbulan Tahun ' + event.item.dataContext.category + '';
+            event.chart.titles[0].text = 'Data Marketer Tahun ' + event.item.dataContext.category + '';
 
             // let's add a label to go back to yearly data
             event.chart.addLabel(
@@ -208,7 +208,7 @@
     // function which resets the chart back to yearly data
     function resetChart() {
         chart.dataProvider = chartData;
-        chart.titles[0].text = 'Yearly data';
+        chart.titles[0].text = 'Data Marketer';
 
         // remove the "Go back" label
         chart.allLabels = [];
